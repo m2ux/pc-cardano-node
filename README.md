@@ -9,7 +9,10 @@ The purpose of this repo is to provide a unified Docker image to run those depen
 * `ogmios`
 * `postgres` 
 
-Once up and running, the Ogmios dashboard is available at: **localhost:1337** and the PostgreSQL server at **localhost:5432**.
+Once up and running, the following services are available @ localhost (port):
+
+* Ogmios dashboard: **1337** 
+* PostgreSQL server at **5432**.
 
 ### Usage
 
