@@ -1,13 +1,15 @@
-# Partner Chains: Cardano Node & Adjacent Components
+# Partner Chains Stack: Cardano Node
 
 ## Purpose
 
-The purpose of this repo is to provide a unified Docker image to run the following components:
+The purpose of this repo is to provide a unified Docker image to run all dependencies of the Partner Chains stack which are co-located with the Cardano node:
 
 * `cardano-node` 
 * `cardano-db-sync`
 * `ogmios`
 * `postgres` 
+
+Once up and running, the Ogmios dashboard is available at: **localhost:1337** and the PostgreSQL server at **localhost:5432**.
 
 ### Usage
 
