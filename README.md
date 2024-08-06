@@ -12,7 +12,7 @@ The purpose of this repo is to provide a unified Docker image to run those depen
 Once up and running, the following services are available @ localhost (port):
 
 * Ogmios dashboard: **1337** 
-* PostgreSQL server at **5432**.
+* DB Sync PostgreSQL server at **5432**.
 
 ### Usage
 
