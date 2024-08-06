@@ -1,0 +1,6 @@
+[submodule "ogmios"]
+	path = ogmios
+	url = https://github.com/CardanoSolutions/ogmios
+[submodule "cardano-db-sync"]
+	path = cardano-db-sync
+	url = https://github.com/IntersectMBO/cardano-db-sync
