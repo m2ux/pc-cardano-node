@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The purpose of this repo is to provide a unified Docker image to run all dependencies of the Partner Chains stack which are co-located with the Cardano node:
+The purpose of this repo is to provide a unified Docker image to run those dependencies of the Partner Chains stack which are co-located with the Cardano node:
 
 * `cardano-node` 
 * `cardano-db-sync`
