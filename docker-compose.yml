@@ -34,8 +34,8 @@ services:
     environment:
       - NETWORK=${NETWORK:-mainnet}
     volumes:
-      - ./ogmios/server/config/network/${NETWORK:-mainnet}/cardano-node:/config
-      - ./ogmios/server/config/network/${NETWORK:-mainnet}/genesis:/genesis
+      - ./cardano-configurations/network/${NETWORK:-mainnet}/cardano-node:/config
+      - ./cardano-configurations/network/${NETWORK:-mainnet}/genesis:/genesis
       - node-db:/data/db
       - node-ipc:/ipc
     restart: on-failure
@@ -67,8 +67,8 @@ services:
       "--node-config", "/config/config.json"
     ]
     volumes:
-      - ./ogmios/server/config/network/${NETWORK:-mainnet}/cardano-node:/config
-      - ./ogmios/server/config/network/${NETWORK:-mainnet}/genesis:/genesis
+      - ./cardano-configurations/network/${NETWORK:-mainnet}/cardano-node:/config
+      - ./cardano-configurations/network/${NETWORK:-mainnet}/genesis:/genesis
       - node-ipc:/ipc
     ports:
       - ${OGMIOS_PORT:-1337}:1337
@@ -95,7 +95,7 @@ services:
       - postgres_user
       - postgres_db
     volumes:
-      - ./cardano-db-sync/db-sync-data:/var/lib/cexplorer
+      - db-sync-data:/var/lib/cexplorer
       - node-ipc:/node-ipc
     restart: on-failure
     logging:
