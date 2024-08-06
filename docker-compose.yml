@@ -54,8 +54,8 @@ services:
 
   ogmios:
     image: cardanosolutions/ogmios:latest
-#    environment:
-#      - NETWORK=${NETWORK:-mainnet}
+    environment:
+      - NETWORK=${NETWORK:-mainnet}
     build:
       context: .
       target: ogmios
