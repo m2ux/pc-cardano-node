@@ -9,6 +9,14 @@ The purpose of this repo is to provide a unified Docker image to run the followi
 * `ogmios`
 * `postgres` 
 
+### Usage
+
+Once cloned, use the following command to start the containers (in daemon mode) and follow the logs:
+```
+docker-compose --env-file .env up -d && docker-compose logs -f
+```
+### Connectivity
+
 A typical use case might be to run these on e.g. an AWS EC2 instance and then tunnel ports 1337 & 5432 over SSH to a local machine running the Partner Chains node.
 
 A typical SSH command specification to achieve this is (assuming aws_cardano_node_1.pem is your SSH priv key):
