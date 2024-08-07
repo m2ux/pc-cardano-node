@@ -23,7 +23,7 @@ Once up and running, the following services are available @ localhost:**port**:
 
 Once cloned, use the following command to start the containers (in daemon mode):
 ```
-docker-compose --env-file .env up -d
+docker-compose up -d
 ```
 ### Connectivity
 
