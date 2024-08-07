@@ -150,15 +150,16 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - 8080:8080
-
-  pc-node:
-    container_name: partnerchains-node
-    image: ghcr.io/input-output-hk/partner-chains/partner-chains-node:latest
-    volumes:
-      - node-data:/data
-    depends_on:
-      cardano-node:
-        condition: service_healthy
+  
+  #The pc node itself is disabled for now
+  #pc-node:
+  #  container_name: partnerchains-node
+  #  image: ghcr.io/input-output-hk/partner-chains/partner-chains-node:latest
+  #  volumes:
+  #    - node-data:/data
+  #  depends_on:
+  #    cardano-node:
+  #      condition: service_healthy
 
 secrets:
   postgres_db:
