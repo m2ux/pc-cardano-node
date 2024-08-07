@@ -11,7 +11,7 @@ The purpose of this repo is to provide a unified multi-application Docker config
 * `kupo`
 * `dozzle`
 
-Once up and running, the following services are available @ localhost (**port**):
+Once up and running, the following services are available @ localhost:**port**:
 
 * Ogmios dashboard: **1337**
 * Kupo server: **1442** 
