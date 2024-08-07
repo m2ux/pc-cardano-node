@@ -9,18 +9,21 @@ The purpose of this repo is to provide a unified multi-application Docker config
 * `postgres` 
 * `ogmios`
 * `kupo`
+* `dozzle`
 
-Once up and running, the following services are available @ localhost (port):
+Once up and running, the following services are available @ localhost:**port**:
 
 * Ogmios dashboard: **1337**
 * Kupo server: **1442** 
 * DB Sync PostgreSQL server: **5432**
+* Dozzle Docker log monitor server: **8080**
+* Cardano Node EKG metrics server: **12788**
 
 ### Usage
 
-Once cloned, use the following command to start the containers (in daemon mode) and follow the logs:
+Once cloned, use the following command to start the containers (in daemon mode):
 ```
-docker-compose --env-file .env up -d && docker-compose logs -f
+docker-compose --env-file .env up -d
 ```
 ### Connectivity
 
