@@ -21,9 +21,17 @@ Once up and running, the following services are available @ localhost:**port**:
 
 ### Usage
 
-Once cloned, use the following command to start the containers (in daemon mode):
+Once cloned, use the following command to create/start all containers (in daemon mode):
 ```
-docker-compose up -d
+./start.sh
+```
+To subsequently stop all running containers, use:
+```
+./stop.sh
+```
+To access the cardano-node CLI run the following script. Any arguments provided will be passed through to `cardano-cli`:
+```
+./cardano-cli.sh
 ```
 ### Connectivity
 
