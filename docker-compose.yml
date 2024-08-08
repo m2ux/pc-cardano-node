@@ -19,6 +19,7 @@ services:
     volumes:
       - ipc:/ipc
       - node-data:/data
+      - ./data:/host
     restart: on-failure
     healthcheck:
       # Ping the EKG port to see if it responds.
@@ -157,6 +158,7 @@ services:
   #  image: ghcr.io/input-output-hk/partner-chains/partner-chains-node:latest
   #  volumes:
   #    - node-data:/data
+  #    - ./:/host
   #  depends_on:
   #    cardano-node:
   #      condition: service_healthy

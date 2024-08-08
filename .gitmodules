@@ -4,6 +4,3 @@
 [submodule "cardano-configurations"]
 	path = cardano-configurations
 	url = https://github.com/input-output-hk/cardano-configurations
-[submodule "cardano-addresses"]
-	path = cardano-addresses
-	url = https://github.com/IntersectMBO/cardano-addresses
