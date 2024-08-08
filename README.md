@@ -27,6 +27,9 @@ Contingent binaries from the [Partnerchains Node release package](https://github
 * `usr/local/bin/partner-chains-cli`
 * `usr/local/bin/sidechain-main-cli`
 
+> [!NOTE]
+> These should be installed *before* attempting any node-related operations.
+
 ### Usage
 
 Once cloned, use the following command to create/start all containers (in daemon mode):
@@ -35,23 +38,23 @@ Once cloned, use the following command to create/start all containers (in daemon
 ```
 To subsequently stop all running containers, use:
 ```
-./stop-node.sh
+./stop-node
 ```
 To access the cardano-node CLI run the following script. Any arguments provided will be passed through to `cardano-cli`:
 ```
-./cardano-cli.sh
+./bin/cardano-cli.sh
 ```
 To [generate payment keys and addresses](https://cardano-course.gitbook.io/cardano-course/handbook/building-and-running-the-node/create-keys-and-addresses#generating-a-payment-key-pair-and-an-address) for the node:
 ```
-./gen-payment-kpa
+./scripts/gen-payment-kpa.sh
 ```
 To [generate stake keys and addresses](https://cardano-course.gitbook.io/cardano-course/handbook/building-and-running-the-node/create-keys-and-addresses#generating-a-stake-key-pair-and-a-type-0-address) for the node:
 ```
-./gen-stake-kpa
+./scripts/gen-stake-kpa.sh
 ```
 To [query UTXOs for the payment address](https://cardano-course.gitbook.io/cardano-course/handbook/building-and-running-the-node/create-keys-and-addresses#querying-the-address-balance) after [recieving funds from the testnet faucet](https://docs.cardano.org/cardano-testnet/tools/faucet):
 ```
-./query-utxos
+./scripts/query-utxos.sh
 ```
 ### Connectivity
 
