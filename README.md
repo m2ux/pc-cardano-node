@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The purpose of this repo is to provide a unified multi-application Docker configuration to run those dependencies of the Partner Chains stack which are co-located with the Cardano node:
+The purpose of this repo is to provide a unified multi-application Docker configuration to run those dependencies of the [Partner Chains](https://github.com/input-output-hk/partner-chains) stack which are co-located with the Cardano node:
 
 * `cardano-node` 
 * `cardano-db-sync`
@@ -23,15 +23,27 @@ Once up and running, the following services are available @ localhost:**port**:
 
 Once cloned, use the following command to create/start all containers (in daemon mode):
 ```
-./start.sh
+./start-node
 ```
 To subsequently stop all running containers, use:
 ```
-./stop.sh
+./stop-node.sh
 ```
 To access the cardano-node CLI run the following script. Any arguments provided will be passed through to `cardano-cli`:
 ```
 ./cardano-cli.sh
+```
+To [generate payment keys and addresses](https://cardano-course.gitbook.io/cardano-course/handbook/building-and-running-the-node/create-keys-and-addresses#generating-a-payment-key-pair-and-an-address) for the node:
+```
+./gen-payment-kpa
+```
+To [generate stake keys and addresses](https://cardano-course.gitbook.io/cardano-course/handbook/building-and-running-the-node/create-keys-and-addresses#generating-a-stake-key-pair-and-a-type-0-address) for the node:
+```
+./gen-stake-kpa
+```
+To [query UTXOs for the payment address](https://cardano-course.gitbook.io/cardano-course/handbook/building-and-running-the-node/create-keys-and-addresses#querying-the-address-balance) after [recieving funds from the testnet faucet](https://docs.cardano.org/cardano-testnet/tools/faucet):
+```
+./query-utxos
 ```
 ### Connectivity
 
@@ -42,7 +54,6 @@ A typical SSH command specification to achieve this is (assuming aws_cardano_nod
 ```
 ssh -i ~/.ssh/aws_cardano_node_1.pem -N -L 1337:localhost:1337 -L 1442:localhost:1442 -L 5432:localhost:5432 ec2-user@ec2-10-49-200-200.eu-north-1.compute.amazonaws.com
 ```
-
 ## System Requirements
 
 The system requirements for running the above components on the same machine are:
