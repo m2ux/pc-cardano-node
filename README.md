@@ -19,6 +19,14 @@ Once up and running, the following services are available @ localhost:**port**:
 * Dozzle Docker-log-monitor server: **8080**
 * Cardano Node EKG-metrics server: **12788**
 
+### Dependencies
+
+Contingent binaries from the [Partnerchains Node release package](https://github.com/input-output-hk/partner-chains/releases/tag/v1.0.0) are expected to be found at:
+
+* `usr/local/bin/partner-chains-node`
+* `usr/local/bin/partner-chains-cli`
+* `usr/local/bin/sidechain-main-cli`
+
 ### Usage
 
 Once cloned, use the following command to create/start all containers (in daemon mode):
