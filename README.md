@@ -60,7 +60,7 @@ Check that the binaries from the [Partnerchains Node release package](https://gi
 * `usr/local/bin/partner-chains-cli`
 * `usr/local/bin/sidechain-main-cli`
 
-> [!NOTE]
+> [!IMPORTANT]
 > These should be installed *before* attempting any partnerchain node-related operations.
 
 #### Setup Partnerchains Node (Chain Builder)
@@ -69,7 +69,7 @@ In order to spin-up a chain-builder node, run:
 
 `./setup-chain-builder`
 
-> [!NOTE]
+> [!IMPORTANT]
 > Before setting up a chain-builder node, the folder `./permissioned-candidate` should contain a public key file (`partner-chains-public-keys-<x>.json`) for every permissioned-candidate to be added to the chain-builders PC list.
 
 #### Setup Partnerchains Node (Permissioned Candidate)
@@ -78,7 +78,7 @@ In order to spin-up a permissioned-candidate node, run:
 
 `./setup-perm-candidate`
 
-> [!NOTE]
+> [!IMPORTANT]
 > Before setting up a permissioned-candidate node, the folder `./chain-builder` should contain a chain specification file (`chain-spec.json`) and a chain configuration (`partner-chains-cli-chain-config.json`) file.
 
 #### Setup Partnerchains Node (Registered Block Producer)
@@ -87,7 +87,7 @@ In order to spin-up a registered-block-producer node, run:
 
 `./setup-registered-block-producer`
 
-> [!NOTE]
+> [!IMPORTANT]
 > Before setting up a registered-block-producer node, the folder `./chain-builder` should contain a chain specification file (`chain-spec.json`) and a chain configuration (`partner-chains-cli-chain-config.json`) file.
 
 ### Misc. scripts
