@@ -4,13 +4,13 @@
 
 ## Purpose
 
-The purpose of this repo is to permit the rapid spin-up of any/all of the three partnerchains node variants using only the provided setup scripts and with minimal user intervention. These node variants are:
+The purpose of this repo is to permit the rapid spin-up of any/all of the three [Partner Chains](https://github.com/input-output-hk/partner-chains) node variants using only the provided setup scripts and with minimal user intervention. These node variants are:
 
 * [Chain Builder](https://github.com/input-output-hk/partner-chains/blob/master/docs/user-guides/chain-builder.md)
 * [Permissioned Candidate](https://github.com/input-output-hk/partner-chains/blob/master/docs/user-guides/permissioned.md)
 * [Registered Block Producer](https://github.com/input-output-hk/partner-chains/blob/master/docs/user-guides/registered.md)
 
-It includes a unified multi-application Docker configuration to encapsulate all of those dependencies of the [Partner Chains](https://github.com/input-output-hk/partner-chains) stack which are co-located with the Cardano node:
+It includes a unified multi-application Docker configuration to encapsulate all of those dependencies of the partner chains stack which are co-located with the Cardano node:
 
 * `cardano-node` 
 * `cardano-db-sync`
