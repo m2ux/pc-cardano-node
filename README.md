@@ -1,4 +1,6 @@
 # Partner Chains Stack: Cardano Node
+> [!WARNING]
+> This repo is under heavy development and may be incomplete and/or change without warning
 
 ## Purpose
 
@@ -16,9 +18,6 @@ It includes a unified multi-application Docker configuration to encapsulate all 
 * `ogmios`
 * `kupo`
 * `dozzle`
-  
-> [!WARNING]
-> This repo is under heavy development and may be incomplete and/or change without warning
 
 ### Usage
 
