@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The purpose of this repo is to provide a unified multi-application Docker configuration to run those dependencies of the [Partner Chains](https://github.com/input-output-hk/partner-chains) stack which are co-located with the Cardano node:
+The purpose of this repo is to permit the rapid spin-up of any/all of the three partnerchains node variants using only the provided setup scripts and with minimal user intervention. It includes a unified multi-application Docker configuration to encapsulate all of those dependencies of the [Partner Chains](https://github.com/input-output-hk/partner-chains) stack which are co-located with the Cardano node:
 
 * `cardano-node` 
 * `cardano-db-sync`
@@ -11,39 +11,68 @@ The purpose of this repo is to provide a unified multi-application Docker config
 * `kupo`
 * `dozzle`
 
-Once up and running, the following services are available @ localhost:**port**:
+### Usage
 
-* Ogmios dashboard: **1337**
-* Kupo server: **1442** 
-* DB-Sync PostgreSQL server: **5432**
-* Dozzle Docker-log-monitor server: **8080**
-* Cardano Node EKG-metrics server: **12788**
+#### Cardano Node
+1, The repo should be checked out and all contained submodules initialised as follows:
 
-### Dependencies
+```git clone https://github.com/m2ux/pc-cardano-node && git submodule init```
 
-Contingent binaries from the [Partnerchains Node release package](https://github.com/input-output-hk/partner-chains/releases/tag/v1.0.0) are expected to be found at:
+> [!NOTE]
+> In order to bring-up a working cardano node, the latest versions of the following dependencies should be installed beforehand:
+>
+> * `git`
+> * `docker`
+> * `docker-compose`
+
+2, Once this is complete, the cardano-node may be activated with:
+
+`./start-cardano-node`
+
+> [!NOTE]
+> Once the node is up and running, the following services are available @ localhost:**port**:
+> 
+> * Ogmios dashboard: **1337**
+> * Kupo server: **1442** 
+> * DB-Sync PostgreSQL server: **5432**
+> * Dozzle Docker-log-monitor server: **8080**
+> * Cardano Node EKG-metrics server: **12788**
+
+To subsequently stop the node, the following command may be issued: 
+
+`./stop-cardano-node`
+
+#### Partnerchains Node (Any)
+
+Check that the binaries from the [Partnerchains Node release package](https://github.com/input-output-hk/partner-chains/releases/tag/v1.0.0) are available at:
 
 * `usr/local/bin/partner-chains-node`
 * `usr/local/bin/partner-chains-cli`
 * `usr/local/bin/sidechain-main-cli`
 
 > [!NOTE]
-> These should be installed *before* attempting any node-related operations.
+> These should be installed *before* attempting any partnerchain node-related operations.
 
-### Usage
+#### Partnerchains Node (Chain Builder)
 
-Once cloned, use the following command to create/start all containers (in daemon mode):
-```
-./start-node
-```
-To subsequently stop all running containers, use:
-```
-./stop-node
-```
-To access the cardano-node CLI run the following script. Any arguments provided will be passed through to `cardano-cli`:
-```
-./bin/cardano-cli.sh
-```
+In order to spin-up a chain-builder node, run:
+
+`./setup-chain-builder`
+
+> [!NOTE]
+> Before setting up a chain-builder node, the folder `./permissioned-candidate` should contain a public key file (`partner-chains-public-keys-<x>.json`) for every permissioned-candidate to be added to the chain-builders PC list.
+
+#### Partnerchains Node (Permissioned Candidate)
+
+In order to spin-up a permissioned-candidate node, run:
+
+`./setup-permissioned-candidate`chain conf
+
+> [!NOTE]
+> Before setting up a permissioned-candidate node, the folder `./chain-builder` should contain a chain specification file (`chain-spec.json`) and a chain configuration (`partner-chains-cli-chain-config.json`) file.
+
+### Misc. scripts
+
 To [generate payment keys and addresses](https://cardano-course.gitbook.io/cardano-course/handbook/building-and-running-the-node/create-keys-and-addresses#generating-a-payment-key-pair-and-an-address) for the node:
 ```
 ./scripts/gen-payment-kpa.sh
