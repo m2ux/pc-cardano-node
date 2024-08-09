@@ -1,0 +1,19 @@
+{
+  "cardano_cli": "./cardano-cli",
+  "cardano_payment_verification_key_file": "/host/payment.vkey",
+  "db_sync_postgres_connection_string": "postgresql://postgres:v8hlDV0yMAHHlIurYupj@localhost:5432/cexplorer",
+  "kupo": {
+    "hostname": "localhost",
+    "port": 1442,
+    "protocol": "http"
+  },
+  "node_p2p_port": 30333,
+  "ogmios": {
+    "hostname": "localhost",
+    "port": 1337,
+    "protocol": "http"
+  },
+  "sidechain_block_beneficiary": "09f6967e0e0b4535e1792d2b168120b45fb583a87c6d9f6e585a79e6fc2b8c67",
+  "substrate_node_base_path": ".",
+  "substrate_node_executable_path": "./partner-chains-node"
+}
