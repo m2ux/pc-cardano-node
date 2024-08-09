@@ -1,7 +1,0 @@
-{
-  "db_sync_postgres_connection_string": "postgresql://postgres:v8hlDV0yMAHHlIurYupj@localhost:5432/cexplorer",
-  "node_p2p_port": 30333,
-  "sidechain_block_beneficiary": "335ef4afa27f841383ca16ddd4c114ec5a47895bea4efd35ac9ec1f243f89026",
-  "substrate_node_base_path": ".",
-  "substrate_node_executable_path": "../bin/partner-chains-node"
-}

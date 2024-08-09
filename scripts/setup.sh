@@ -1,21 +1,27 @@
 #!/bin/bash
 
-cd data
+cd chain-builder
 
-../scripts/gen-payment-kpa.sh
-../scripts/gen-stake-kpa.sh
-#mv *.*key ./data
-../bin/partner-chains-cli generate-keys
-../bin/partner-chains-cli prepare-configuration
+# Symlinks permit binaries to be referenced as local to PWD
+ln -s -f ../scripts/cardano-cli.sh cardano-cli
+ln -s -f /usr/local/bin/partner-chains-cli partner-chains-cli
+ln -s -f /usr/local/bin/partner-chains-node partner-chains-node
+ln -s -f /usr/local/bin/sidechain-main-cli sidechain-main-cli
+
+echo -- Partnerchains CLI Generate keys and prepare configuration --
+
+./partner-chains-cli generate-keys
+./partner-chains-cli prepare-configuration
 
 # Insert the permissioned candidate keys into the chain config for this node
-cat partner-chains-public-keys.json | ../scripts/insert-ipc.sh partner-chains-cli-chain-config.json
+#cat partner-chains-public-keys.json | ../scripts/insert-ipc.sh partner-chains-cli-chain-config.json
 
-../bin/partner-chains-cli create-chain-spec
-../bin/partner-chains-cli setup-main-chain-state
-mv partner-chains*.json ../data
-#mv chain-spec.json ../data
-#cd ..
-#mv partner-chains*.json ./data
-#cd bin
-../bin/partner-chains-cli start-node
+./partner-chains-cli create-chain-spec
+./partner-chains-cli setup-main-chain-state
+./partner-chains-cli start-node
+
+# Remove symlinks
+rm -f cardano-cli
+rm -f partner-chains-cli
+rm -f partner-chains-node
+rm -f sidechain-main-cli
