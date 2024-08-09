@@ -13,8 +13,8 @@ The purpose of this repo is to permit the rapid spin-up of any/all of the three 
 
 ### Usage
 
-#### Setup Cardano Node
-1, The repo should be checked out and all contained submodules initialised as follows:
+#### Pre-amble
+The repo should be checked out and all contained submodules initialised as follows:
 
 ```git clone https://github.com/m2ux/pc-cardano-node && git submodule init```
 
@@ -25,7 +25,9 @@ The purpose of this repo is to permit the rapid spin-up of any/all of the three 
 > * `docker`
 > * `docker-compose`
 
-2, Once this is complete, the cardano-node may be activated with:
+#### Setup Cardano Node
+
+Once this is complete, the cardano-node may be activated with:
 
 `./start-cardano-node`
 
