@@ -66,10 +66,19 @@ In order to spin-up a chain-builder node, run:
 
 In order to spin-up a permissioned-candidate node, run:
 
-`./setup-permissioned-candidate`chain conf
+`./setup-perm-candidate`
 
 > [!NOTE]
 > Before setting up a permissioned-candidate node, the folder `./chain-builder` should contain a chain specification file (`chain-spec.json`) and a chain configuration (`partner-chains-cli-chain-config.json`) file.
+
+#### Partnerchains Node (Registered Block Producer)
+
+In order to spin-up a registered-block-producer node, run:
+
+`./setup-registered-block-producer`
+
+> [!NOTE]
+> Before setting up a registered-block-producer node, the folder `./chain-builder` should contain a chain specification file (`chain-spec.json`) and a chain configuration (`partner-chains-cli-chain-config.json`) file.
 
 ### Misc. scripts
 
