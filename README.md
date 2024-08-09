@@ -13,7 +13,7 @@ The purpose of this repo is to permit the rapid spin-up of any/all of the three 
 
 ### Usage
 
-#### Cardano Node
+#### Setup Cardano Node
 1, The repo should be checked out and all contained submodules initialised as follows:
 
 ```git clone https://github.com/m2ux/pc-cardano-node && git submodule init```
@@ -42,7 +42,7 @@ To subsequently stop the node, the following command may be issued:
 
 `./stop-cardano-node`
 
-#### Partnerchains Node (Any)
+#### Setup Partnerchains Node (Any)
 
 Check that the binaries from the [Partnerchains Node release package](https://github.com/input-output-hk/partner-chains/releases/tag/v1.0.0) are available at:
 
@@ -53,7 +53,7 @@ Check that the binaries from the [Partnerchains Node release package](https://gi
 > [!NOTE]
 > These should be installed *before* attempting any partnerchain node-related operations.
 
-#### Partnerchains Node (Chain Builder)
+#### Setup Partnerchains Node (Chain Builder)
 
 In order to spin-up a chain-builder node, run:
 
@@ -62,7 +62,7 @@ In order to spin-up a chain-builder node, run:
 > [!NOTE]
 > Before setting up a chain-builder node, the folder `./permissioned-candidate` should contain a public key file (`partner-chains-public-keys-<x>.json`) for every permissioned-candidate to be added to the chain-builders PC list.
 
-#### Partnerchains Node (Permissioned Candidate)
+#### Setup Partnerchains Node (Permissioned Candidate)
 
 In order to spin-up a permissioned-candidate node, run:
 
@@ -71,7 +71,7 @@ In order to spin-up a permissioned-candidate node, run:
 > [!NOTE]
 > Before setting up a permissioned-candidate node, the folder `./chain-builder` should contain a chain specification file (`chain-spec.json`) and a chain configuration (`partner-chains-cli-chain-config.json`) file.
 
-#### Partnerchains Node (Registered Block Producer)
+#### Setup Partnerchains Node (Registered Block Producer)
 
 In order to spin-up a registered-block-producer node, run:
 
