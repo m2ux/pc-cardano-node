@@ -1,6 +1,6 @@
 # Partner Chains Stack: Cardano Node
 > [!WARNING]
-> This repo is under heavy development and may be incomplete and/or change without warning
+> This repo is under active development and may be incomplete and/or change without warning
 
 ## Purpose
 
@@ -10,7 +10,7 @@ The purpose of this repo is to permit the rapid spin-up of any/all of the three 
 * [Permissioned Candidate](https://github.com/input-output-hk/partner-chains/blob/master/docs/user-guides/permissioned.md)
 * [Registered Block Producer](https://github.com/input-output-hk/partner-chains/blob/master/docs/user-guides/registered.md)
 
-It includes a unified multi-application Docker configuration to encapsulate all of those dependencies of the partner chains stack which are co-located with the Cardano node:
+It includes a unified multi-application Docker configuration to encapsulate all dependencies of the partner chains stack:
 
 * `cardano-node` 
 * `cardano-db-sync`
@@ -19,25 +19,40 @@ It includes a unified multi-application Docker configuration to encapsulate all 
 * `kupo`
 * `dozzle`
 
-### Usage
-
-#### Pre-amble
-The repo should be checked out and all contained submodules initialised as follows:
+## Enviroment Setup
+1, The repo should be checked out and all contained submodules initialised as follows:
 
 ```git clone https://github.com/m2ux/pc-cardano-node && git submodule init```
 
 > [!NOTE]
-> In order to bring-up a working cardano node, the latest versions of the following dependencies should be installed beforehand:
+> The latest versions of the following dependencies should be installed before attempting any PC node related operations:
 >
 > * `git`
 > * `docker`
 > * `docker-compose`
 
-#### Setup Cardano Node
+2, Ensure that the binaries from the [Partnerchains Node release package](https://github.com/input-output-hk/partner-chains/releases/tag/v1.0.0) are available at:
 
-Once this is complete, the cardano-node may be activated with:
+* `usr/local/bin/partner-chains-node`
+* `usr/local/bin/partner-chains-cli`
+* `usr/local/bin/sidechain-main-cli`
 
-`./start-cardano-node`
+## Node Types
+
+Any reference henceforth to `node-type` corresponds to one of the following three verbatim types:
+
+* `chain-builder`
+* `permissioned-candidate`
+* `registered-block-producer`
+
+These are succinctly referred to in body text as **CB**, **PC** and **RBP**
+
+## Node Operations
+
+### Start a Cardano Node
+A cardano-node may be created/started with:
+
+`./start-cardano-node <node-type>`
 
 > [!NOTE]
 > Once the node is up and running, the following services are available @ localhost:**port**:
@@ -47,49 +62,40 @@ Once this is complete, the cardano-node may be activated with:
 > * DB-Sync PostgreSQL server: **5432**
 > * Dozzle Docker-log-monitor server: **8080**
 > * Cardano Node EKG-metrics server: **12788**
+>
+> The exact port numbers above **vary depending on the node type** and are pre-configured in the file: `.env` in *each* of the respective node-type folders.
 
-To subsequently stop the node, the following command may be issued: 
+### Stop a Cardano Node
 
-`./stop-cardano-node`
+To stop a running cardano node, the following command may be issued: 
 
-#### Setup Partnerchains Node (Any)
+`./stop-cardano-node <node-type>`
 
-Check that the binaries from the [Partnerchains Node release package](https://github.com/input-output-hk/partner-chains/releases/tag/v1.0.0) are available at:
+### Generate PC Node Public Keys
 
-* `usr/local/bin/partner-chains-node`
-* `usr/local/bin/partner-chains-cli`
-* `usr/local/bin/sidechain-main-cli`
+Public keys for any node type may be generated with:
 
-> [!IMPORTANT]
-> These should be installed *before* attempting any partnerchain node-related operations.
-
-#### Setup Partnerchains Node (Chain Builder)
-
-In order to spin-up a chain-builder node, run:
-
-`./setup-chain-builder`
+`./gen-public-keys <node-type>`
 
 > [!IMPORTANT]
-> Before setting up a chain-builder node, the folder `./permissioned-candidate` should contain a public key file (`partner-chains-public-keys-<x>.json`) for every permissioned-candidate to be added to the chain-builders PC list.
+> Prior to commencing setup of a CB node, the public keys of any/all permissioned validators must be present.
 
-#### Setup Partnerchains Node (Permissioned Candidate)
+### Setup Partnerchains Node
 
-In order to spin-up a permissioned-candidate node, run:
+In order to setup a given partnerchains node type, run:
 
-`./setup-perm-candidate`
+`./setup-pc-node <node-type>`
 
-> [!IMPORTANT]
-> Before setting up a permissioned-candidate node, the folder `./chain-builder` should contain a chain specification file (`chain-spec.json`) and a chain configuration (`partner-chains-cli-chain-config.json`) file.
+## Cluster Operations
 
-#### Setup Partnerchains Node (Registered Block Producer)
+### Tri-node Setup (1CB + 1PC + 1RBP)
 
-In order to spin-up a registered-block-producer node, run:
+The following sequence of operations will spin-up a cluster of each node type running in a single host environment:
 
-`./setup-registered-block-producer`
-
-> [!IMPORTANT]
-> Before setting up a registered-block-producer node, the folder `./chain-builder` should contain a chain specification file (`chain-spec.json`) and a chain configuration (`partner-chains-cli-chain-config.json`) file.
-
+```
+./start-cardano-node chain-builder && ./start-cardano-node permissioned-candidate && ./gen-public-keys permissioned-candidate
+./setup-pc-node chain-builder && ./setup-pc-node chain-builder && ./setup-pc-node registered-block-producer
+```
 ### Misc. scripts
 
 To [generate payment keys and addresses](https://cardano-course.gitbook.io/cardano-course/handbook/building-and-running-the-node/create-keys-and-addresses#generating-a-payment-key-pair-and-an-address) for the node:
@@ -104,15 +110,7 @@ To [query UTXOs for the payment address](https://cardano-course.gitbook.io/carda
 ```
 ./scripts/query-utxos.sh
 ```
-### Connectivity
 
-A typical use case might be to run these on e.g. an AWS EC2 instance and then tunnel ports 1337, 1442 & 5432 over SSH to a local machine running the Partner Chains node.
-
-A typical SSH command specification to achieve this is (assuming aws_cardano_node_1.pem is your SSH priv key):
-
-```
-ssh -i ~/.ssh/aws_cardano_node_1.pem -N -L 1337:localhost:1337 -L 1442:localhost:1442 -L 5432:localhost:5432 ec2-user@ec2-10-49-200-200.eu-north-1.compute.amazonaws.com
-```
 ## System Requirements
 
 The system requirements for running the above components on the same machine are:
