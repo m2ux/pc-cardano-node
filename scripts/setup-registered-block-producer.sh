@@ -8,6 +8,9 @@ if [[ ! -f ../chain-builder/chain-spec.json ]] || [[! -f ../chain-builder/partne
     exit
 fi
 
+# Remove legacy artifacts
+rm partner-chains-cli-chain-config.json partner-chains-public-keys.json
+
 # Copy the chain configuration from the chain-builder folder
 cp ../chain-builder/chain-spec.json .
 cp ../chain-builder/partner-chains-cli-chain-config.json .
@@ -24,10 +27,11 @@ ln -s -f /usr/local/bin/sidechain-main-cli sidechain-main-cli
 ./partner-chains-cli register1
 ./partner-chains-cli register2
 ./partner-chains-cli register3
-./partner-chains-cli start-node
 
 # Remove symlinks
 rm -f cardano-cli
 rm -f partner-chains-cli
 rm -f partner-chains-node
 rm -f sidechain-main-cli
+
+partner-chains-cli start-node

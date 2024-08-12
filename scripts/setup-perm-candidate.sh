@@ -18,13 +18,17 @@ ln -s -f /usr/local/bin/partner-chains-cli partner-chains-cli
 ln -s -f /usr/local/bin/partner-chains-node partner-chains-node
 ln -s -f /usr/local/bin/sidechain-main-cli sidechain-main-cli
 
-# Setup and start the node
+# Remove legacy artifacts
+rm partner-chains-cli-chain-config.json partner-chains-public-keys.json
+
+# Generate public keys and prepare configuration
 ./partner-chains-cli generate-keys
 ./partner-chains-cli prepare-configuration
-./partner-chains-cli start-node
 
 # Remove symlinks
 rm -f cardano-cli
 rm -f partner-chains-cli
 rm -f partner-chains-node
 rm -f sidechain-main-cli
+
+partner-chains-cli start-node

@@ -7,19 +7,20 @@ volumes:
   postgres-data: {}
   ogmios-data: {}
   kupo-data: {}
+#  dozzle-data: {}
 
 services:
   cardano-node:
     image: ghcr.io/intersectmbo/cardano-node:9.1.0
     network_mode: "host"
-    container_name: partnerchains-cardano-node
+#    container_name: partnerchains-cardano-node
     environment:
       - NETWORK=${NETWORK}
       - CARDANO_NODE_SOCKET_PATH=/ipc/node.socket
     volumes:
       - ipc:/ipc
       - node-data:/data
-      - ./data:/host
+      - ./$NODE_TYPE/:/host
     restart: on-failure
     healthcheck:
       # Ping the EKG port to see if it responds.
@@ -36,7 +37,7 @@ services:
   postgres:
     image: postgres:14.10-alpine
     shm_size: 1g
-    container_name: partnerchains-postgres
+#    container_name: partnerchains-postgres
     environment:
       - POSTGRES_LOGGING=true
       - POSTGRES_DB_FILE=/run/secrets/postgres_db
@@ -72,13 +73,13 @@ services:
     environment:
       - NETWORK=${NETWORK}
       - POSTGRES_HOST=postgres
-      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_PORT=5432
       - RESTORE_SNAPSHOT=${RESTORE_SNAPSHOT:-}
       - RESTORE_RECREATE_DB=N
       - DB_SYNC_CONFIG=/config/config.json
       - EXTRA_DB_SYNC_ARGS=${EXTRA_DB_SYNC_ARGS:-}
       - DISABLE_LEDGER=${DB_SYNC_DISABLE_LEDGER:-0}
-    container_name: partnerchains-db-sync
+#    container_name: partnerchains-db-sync
     depends_on:
       # Depend on both services to be healthy before starting.
       cardano-node:
@@ -102,7 +103,7 @@ services:
 
   ogmios:
     image: cardanosolutions/ogmios:latest
-    container_name: partnerchains-ogmios
+#    container_name: partnerchains-ogmios
     build:
       context: .
       target: ogmios
@@ -130,7 +131,7 @@ services:
 
   kupo:
     image: cardanosolutions/kupo:v2.9.0
-    container_name: partnerchains-kupo
+#    container_name: partnerchains-kupo
     command: '--host 0.0.0.0 --node-config /config/config.json --node-socket /ipc/node.socket --workdir /data/db --match "*" --since origin'
     ports:
       - ${KUPO_PORT:-1442}:1442
@@ -145,12 +146,16 @@ services:
     restart: on-failure
 
   dozzle:
-    container_name: partnerchains-dozzle
+#    container_name: partnerchains-dozzle
     image: amir20/dozzle:latest
     volumes:
+#      - dozzle-data:/data
+#      - type: bind
+#        source: $HOST/var/run/docker.sock
+#        target: /var/run/docker.sock
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - 8080:8080
+      - ${DOZZLE_PORT:-8080}:8080
   
   #The pc node itself is disabled for now
   #pc-node:
