@@ -90,7 +90,7 @@ In order to setup a given partnerchains node type, run:
 
 ### Tri-node Setup (1CB + 1PC + 1RBP)
 
-The following sequence of operations will spin-up a cluster of each node type running in a single host environment:
+The following sequence of operations will spin-up a cluster containing one of each node type running in a single host environment:
 
 ```
 ./start-cardano-node chain-builder && ./start-cardano-node permissioned-candidate && ./gen-public-keys permissioned-candidate
