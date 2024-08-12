@@ -98,7 +98,7 @@ The following sequence of operations will spin-up a cluster containing one of ea
 ```
 > [!NOTE]
 > The primary use case envisaged for this confgiruation is PC testing & development
-### Misc. scripts
+## Misc. scripts
 
 To [generate payment keys and addresses](https://cardano-course.gitbook.io/cardano-course/handbook/building-and-running-the-node/create-keys-and-addresses#generating-a-payment-key-pair-and-an-address) for the node:
 ```
