@@ -96,6 +96,8 @@ The following sequence of operations will spin-up a cluster of each node type ru
 ./start-cardano-node chain-builder && ./start-cardano-node permissioned-candidate && ./gen-public-keys permissioned-candidate
 ./setup-pc-node chain-builder && ./setup-pc-node chain-builder && ./setup-pc-node registered-block-producer
 ```
+> [!NOTE]
+> The primary use case envisaged for this confgiruation is PC testing & development
 ### Misc. scripts
 
 To [generate payment keys and addresses](https://cardano-course.gitbook.io/cardano-course/handbook/building-and-running-the-node/create-keys-and-addresses#generating-a-payment-key-pair-and-an-address) for the node:
