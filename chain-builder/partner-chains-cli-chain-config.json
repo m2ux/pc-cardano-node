@@ -1,2 +1,33 @@
 {
+  "bootnodes": [
+    "/dns/localhost/tcp/3033/p2p/12D3KooWRkAnbLVRNJQ1apswWRXChgqU7wQcdUybEHrMDjNAAD4w"
+  ],
+  "cardano": {
+    "active_slots_coeff": 0.05,
+    "epoch_duration_millis": 432000000,
+    "first_epoch_number": 208,
+    "first_epoch_timestamp_millis": 1596059091000,
+    "first_slot_number": 4492800,
+    "network": 0,
+    "security_parameter": 2160
+  },
+  "cardano_addresses": {
+    "committee_candidates_address": "addr_test1wpraadwghkwsxsktykllmgpalpyuad423yavjeh6ny3fumgm73235",
+    "d_parameter_policy_id": "fb38cbdda165be812518cbf99bd180b1e39de7ab822907bc27e6cfe6",
+    "permissioned_candidates_policy_id": "10c86c53d883000f85175549b95c519de9709f0caee998cef351b2f5"
+  },
+  "chain_parameters": {
+    "chain_id": 0,
+    "genesis_committee_utxo": "0000000000000000000000000000000000000000000000000000000000000000#0",
+    "governance_authority": "0x0938613992a666e53cc7ad55af8203270d5f0cc8af7a3cb2b9e42a58",
+    "threshold_denominator": 3,
+    "threshold_numerator": 2
+  },
+  "initial_permissioned_candidates": [
+    {
+      "sidechain_pub_key": "0x037edf9a48def70eb24c364b7645fad1bfd6c61b657c115b843e6e7d775ac11501",
+      "aura_pub_key": "0x4e0fe823698701a55c49f0eb57821cfa247189bc1a814c08c14198e636fec016",
+      "grandpa_pub_key": "0x8bbc9a0767c93a078f33070df630bf0e9eab9d2948472fac037f62230d6e681c"
+    }
+  ]
 }

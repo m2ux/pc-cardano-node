@@ -33,5 +33,3 @@ rm -f cardano-cli
 rm -f partner-chains-cli
 rm -f partner-chains-node
 rm -f sidechain-main-cli
-
-partner-chains-cli start-node
