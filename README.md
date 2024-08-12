@@ -19,7 +19,7 @@ It includes a unified multi-application Docker configuration to encapsulate all 
 * `kupo`
 * `dozzle`
 
-## Enviroment Setup
+## Environment Setup
 1, The repo should be checked out and all contained submodules initialised as follows:
 
 ```git clone https://github.com/m2ux/pc-cardano-node && git submodule init```
