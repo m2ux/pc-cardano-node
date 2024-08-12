@@ -9,8 +9,8 @@ if [[ ! -f ../chain-builder/chain-spec.json ]] || [[! -f ../chain-builder/partne
 fi
 
 # Acquire the chain configuration from the chain-builder folder
-cp ../chain-builder/chain-spec.json .
-cp ../chain-builder/partner-chains-cli-chain-config.json .
+#cp ../chain-builder/chain-spec.json .
+#cp ../chain-builder/partner-chains-cli-chain-config.json .
 
 # Symlinks permit binaries to be referenced as local to PWD
 ln -s -f ../scripts/cardano-cli.sh cardano-cli
