@@ -86,7 +86,7 @@ In order to setup a given partnerchains node type, run:
 
 `./setup-pc-node <node-type>`
 
-## Query Node Payment Address UTXOs
+### Query Node Payment Address UTXOs
 
 To [query UTXOs for the payment address](https://cardano-course.gitbook.io/cardano-course/handbook/building-and-running-the-node/create-keys-and-addresses#querying-the-address-balance) after [recieving funds from the testnet faucet](https://docs.cardano.org/cardano-testnet/tools/faucet):
 ```
