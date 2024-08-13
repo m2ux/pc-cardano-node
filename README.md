@@ -86,6 +86,12 @@ In order to setup a given partnerchains node type, run:
 
 `./setup-pc-node <node-type>`
 
+## Query Node Payment Address UTXOs
+
+To [query UTXOs for the payment address](https://cardano-course.gitbook.io/cardano-course/handbook/building-and-running-the-node/create-keys-and-addresses#querying-the-address-balance) after [recieving funds from the testnet faucet](https://docs.cardano.org/cardano-testnet/tools/faucet):
+```
+./query-utxos <node-type>
+```
 ## Cluster Operations
 
 ### Tri-node Setup (1CB + 1PC + 1RBP)
@@ -98,7 +104,7 @@ The following sequence of operations will spin-up a cluster containing one of ea
 ```
 > [!NOTE]
 > The primary use case envisaged for this configuration is PC testing & development
-## Misc. scriptsg
+## Misc. scripts
 
 To [generate payment keys and addresses](https://cardano-course.gitbook.io/cardano-course/handbook/building-and-running-the-node/create-keys-and-addresses#generating-a-payment-key-pair-and-an-address) for the node:
 ```
@@ -108,11 +114,6 @@ To [generate stake keys and addresses](https://cardano-course.gitbook.io/cardano
 ```
 ./scripts/gen-stake-kpa.sh
 ```
-To [query UTXOs for the payment address](https://cardano-course.gitbook.io/cardano-course/handbook/building-and-running-the-node/create-keys-and-addresses#querying-the-address-balance) after [recieving funds from the testnet faucet](https://docs.cardano.org/cardano-testnet/tools/faucet):
-```
-./query-utxos <node-type>
-```
-
 ## System Requirements
 
 The system requirements for running the above components on the same machine are:
