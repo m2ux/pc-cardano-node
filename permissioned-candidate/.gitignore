@@ -3,3 +3,5 @@
 # Except this file
 !.gitignore
 !partner-chains-cli-resources-config.json
+!partner-chains-cli-chain-config.json
+!chain-spec.json
