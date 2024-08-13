@@ -97,8 +97,8 @@ The following sequence of operations will spin-up a cluster containing one of ea
 ./setup-pc-node chain-builder && ./setup-pc-node chain-builder && ./setup-pc-node registered-block-producer
 ```
 > [!NOTE]
-> The primary use case envisaged for this confgiruation is PC testing & development
-## Misc. scripts
+> The primary use case envisaged for this configuration is PC testing & development
+## Misc. scriptsg
 
 To [generate payment keys and addresses](https://cardano-course.gitbook.io/cardano-course/handbook/building-and-running-the-node/create-keys-and-addresses#generating-a-payment-key-pair-and-an-address) for the node:
 ```
@@ -110,7 +110,7 @@ To [generate stake keys and addresses](https://cardano-course.gitbook.io/cardano
 ```
 To [query UTXOs for the payment address](https://cardano-course.gitbook.io/cardano-course/handbook/building-and-running-the-node/create-keys-and-addresses#querying-the-address-balance) after [recieving funds from the testnet faucet](https://docs.cardano.org/cardano-testnet/tools/faucet):
 ```
-./scripts/query-utxos.sh
+./query-utxos <node-type>
 ```
 
 ## System Requirements
