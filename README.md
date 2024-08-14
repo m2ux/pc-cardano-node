@@ -116,7 +116,9 @@ The following sequence of operations will spin-up a cluster containing one of ea
 ```
 ./setup-pc-node permissioned-candidate
 ```
-7. Run the setup script for the registered block producer node:
+7. [Fund](https://docs.cardano.org/cardano-testnets/tools/faucet/) the RBP address with tADA. The address can be found at: `./registered-block-producer/payment.addr`
+   
+9. Run the setup script for the registered block producer node:
 ```
 ./setup-pc-node registered-block-producer
 ```
