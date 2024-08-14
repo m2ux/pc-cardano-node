@@ -96,14 +96,26 @@ To [query UTXOs for the payment address](https://cardano-course.gitbook.io/carda
 
 ### Tri-node Setup (1CB + 1PC + 1RBP)
 
-The following sequence of operations will spin-up a cluster containing one of each node type running in a single host environment:
+The following sequence of operations will spin-up a cluster containing one of each node type running in a single host environment. The primary use case envisaged for this configuration is PC testing & development.
 
+1. Start each Cardano node:
 ```
-./start-cardano-node chain-builder && ./start-cardano-node permissioned-candidate && ./gen-public-keys permissioned-candidate
-./setup-pc-node chain-builder && ./setup-pc-node chain-builder && ./setup-pc-node registered-block-producer
+./start-cardano-node chain-builder && ./start-cardano-node permissioned-candidate && ./start-cardano-node registered-block-producer
 ```
-> [!NOTE]
-> The primary use case envisaged for this configuration is PC testing & development
+2. Check Ogmios health status and confirm that each node is showing a status of `connected` and syncing with the `preview` network.
+3. Wait for each node to achieve 100% synchronisation before continuing. This may take >= 24 hours.
+4. Generate the public keys for the permissioned candidate:
+```
+./gen-public-keys permissioned-candidate
+```
+5. Run the setup script for the chain-builder node:
+```
+./setup-pc-node chain-builder
+```
+6. Run the setup script for the registered block producer node
+```
+./setup-pc-node registered-block-producer
+```
 ## Misc. scripts
 
 To [generate payment keys and addresses](https://cardano-course.gitbook.io/cardano-course/handbook/building-and-running-the-node/create-keys-and-addresses#generating-a-payment-key-pair-and-an-address) for the node:
