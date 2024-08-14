@@ -112,7 +112,11 @@ The following sequence of operations will spin-up a cluster containing one of ea
 ```
 ./setup-pc-node chain-builder
 ```
-6. Run the setup script for the registered block producer node
+6. Run the setup script for the permissioned candidate node:
+```
+./setup-pc-node permissioned-candidate
+```
+7. Run the setup script for the registered block producer node:
 ```
 ./setup-pc-node registered-block-producer
 ```
