@@ -33,9 +33,9 @@ It includes a unified multi-application Docker configuration to encapsulate all 
 
 2, Ensure that the binaries from the [Partnerchains Node release package](https://github.com/input-output-hk/partner-chains/releases/tag/v1.0.0) are available at:
 
-* `usr/local/bin/partner-chains-node`
-* `usr/local/bin/partner-chains-cli`
-* `usr/local/bin/sidechain-main-cli`
+* `/usr/local/bin/partner-chains-node`
+* `/usr/local/bin/partner-chains-cli`
+* `/usr/local/bin/sidechain-main-cli`
 
 ## Node Types
 
