@@ -1,4 +1,4 @@
-# Partner Chains Stack: Cardano Node
+# Partner Chains Stack: Cardano Node + PC Node
 > [!WARNING]
 > This repo is under active development and may be incomplete and/or change without warning
 
