@@ -1,4 +1,4 @@
-# Partner Chains Stack: Cardano Node
+# Partner Chains Stack: Cardano Node + PC Node
 > [!WARNING]
 > This repo is under active development and may be incomplete and/or change without warning
 
@@ -33,9 +33,9 @@ It includes a unified multi-application Docker configuration to encapsulate all 
 
 2, Ensure that the binaries from the [Partnerchains Node release package](https://github.com/input-output-hk/partner-chains/releases/tag/v1.0.0) are available at:
 
-* `usr/local/bin/partner-chains-node`
-* `usr/local/bin/partner-chains-cli`
-* `usr/local/bin/sidechain-main-cli`
+* `/usr/local/bin/partner-chains-node`
+* `/usr/local/bin/partner-chains-cli`
+* `/usr/local/bin/sidechain-main-cli`
 
 ## Node Types
 
@@ -86,19 +86,44 @@ In order to setup a given partnerchains node type, run:
 
 `./setup-pc-node <node-type>`
 
+### Query Node Payment Address UTXOs
+
+To [query UTXOs for the payment address](https://cardano-course.gitbook.io/cardano-course/handbook/building-and-running-the-node/create-keys-and-addresses#querying-the-address-balance) after [recieving funds from the testnet faucet](https://docs.cardano.org/cardano-testnet/tools/faucet):
+```
+./query-utxos <node-type>
+```
 ## Cluster Operations
 
 ### Tri-node Setup (1CB + 1PC + 1RBP)
 
-The following sequence of operations will spin-up a cluster containing one of each node type running in a single host environment:
+The following sequence of operations will spin-up a cluster containing one of each node type running in a single host environment. The primary use case envisaged for this configuration is PC testing & development.
 
+1. Start each Cardano node:
 ```
-./start-cardano-node chain-builder && ./start-cardano-node permissioned-candidate && ./gen-public-keys permissioned-candidate
-./setup-pc-node chain-builder && ./setup-pc-node chain-builder && ./setup-pc-node registered-block-producer
+./start-cardano-node chain-builder && ./start-cardano-node permissioned-candidate && ./start-cardano-node registered-block-producer
 ```
-> [!NOTE]
-> The primary use case envisaged for this confgiruation is PC testing & development
+2. Check Ogmios health status and confirm that each node is showing a status of `connected` and syncing with the `preview` network.
+3. Wait for each node to achieve 100% synchronisation before continuing. This may take >= 24 hours.
+4. Generate the public keys for the permissioned candidate:
+```
+./gen-public-keys permissioned-candidate
+```
+5. Run the setup script for the chain-builder node:
+```
+./setup-pc-node chain-builder
+```
+6. Run the setup script for the permissioned candidate node:
+```
+./setup-pc-node permissioned-candidate
+```
+7. [Fund](https://docs.cardano.org/cardano-testnets/tools/faucet/) the RBP address with tADA. The address can be found at: `./registered-block-producer/payment.addr`
+   
+9. Run the setup script for the registered block producer node:
+```
+./setup-pc-node registered-block-producer
+```
 ## Misc. scripts
+These scripts are already integrated into the above workflows however they are documented below should you want to use them in a standalone fashion.
 
 To [generate payment keys and addresses](https://cardano-course.gitbook.io/cardano-course/handbook/building-and-running-the-node/create-keys-and-addresses#generating-a-payment-key-pair-and-an-address) for the node:
 ```
@@ -108,11 +133,6 @@ To [generate stake keys and addresses](https://cardano-course.gitbook.io/cardano
 ```
 ./scripts/gen-stake-kpa.sh
 ```
-To [query UTXOs for the payment address](https://cardano-course.gitbook.io/cardano-course/handbook/building-and-running-the-node/create-keys-and-addresses#querying-the-address-balance) after [recieving funds from the testnet faucet](https://docs.cardano.org/cardano-testnet/tools/faucet):
-```
-./scripts/query-utxos.sh
-```
-
 ## System Requirements
 
 The system requirements for running the above components on the same machine are:
