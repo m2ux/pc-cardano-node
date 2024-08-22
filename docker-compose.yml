@@ -13,7 +13,6 @@ services:
   cardano-node:
     image: ghcr.io/intersectmbo/cardano-node:9.1.0
     network_mode: "host"
-#    container_name: partnerchains-cardano-node
     environment:
       - NETWORK=${NETWORK}
       - CARDANO_NODE_SOCKET_PATH=/ipc/node.socket
@@ -37,7 +36,6 @@ services:
   postgres:
     image: postgres:14.10-alpine
     shm_size: 1g
-#    container_name: partnerchains-postgres
     environment:
       - POSTGRES_LOGGING=true
       - POSTGRES_DB_FILE=/run/secrets/postgres_db
@@ -79,7 +77,6 @@ services:
       - DB_SYNC_CONFIG=/config/config.json
       - EXTRA_DB_SYNC_ARGS=${EXTRA_DB_SYNC_ARGS:-}
       - DISABLE_LEDGER=${DB_SYNC_DISABLE_LEDGER:-0}
-#    container_name: partnerchains-db-sync
     depends_on:
       # Depend on both services to be healthy before starting.
       cardano-node:
@@ -103,7 +100,6 @@ services:
 
   ogmios:
     image: cardanosolutions/ogmios:latest
-#    container_name: partnerchains-ogmios
     build:
       context: .
       target: ogmios
@@ -146,7 +142,6 @@ services:
     restart: on-failure
 
   dozzle:
-#    container_name: partnerchains-dozzle
     image: amir20/dozzle:latest
     volumes:
 #      - dozzle-data:/data
@@ -157,21 +152,10 @@ services:
     ports:
       - ${DOZZLE_PORT:-8080}:8080
   
-  #The pc node itself is disabled for now
-  #pc-node:
-  #  container_name: partnerchains-node
-  #  image: ghcr.io/input-output-hk/partner-chains/partner-chains-node:latest
-  #  volumes:
-  #    - node-data:/data
-  #    - ./:/host
-  #  depends_on:
-  #    cardano-node:
-  #      condition: service_healthy
-
 secrets:
   postgres_db:
-    file: ./cardano-db-sync/config/secrets/postgres_db
+    file: ./secrets/postgres_db
   postgres_password:
-    file: ./cardano-db-sync/config/secrets/postgres_password
+    file: ./secrets/postgres_password
   postgres_user:
-    file: ./cardano-db-sync/config/secrets/postgres_user
+    file: ./secrets/postgres_user
