@@ -1,2 +1,5 @@
 #!/bin/sh
-./scripts/stop-node.sh pc_$1
+cd $1
+../scripts/stop-node.sh
+cd ..
+
